@@ -42,23 +42,23 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
-      # Publish to npm with version tag
-      - name: Publish to npm with version tag
-        run: npm publish --access public --tag v${{ github.event.repository.packageJson.version }} --registry=https://registry.npmjs.org
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      # # Publish to npm with version tag
+      # - name: Publish to npm with version tag
+      #   run: npm publish --access public --tag v${{ github.event.repository.packageJson.version }} --registry=https://registry.npmjs.org
+      #   env:
+      #     NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
-      # Publish to npm with latest tag
-      - name: Publish to npm with latest tag
-        run: npm publish --access public --tag latest --registry=https://registry.npmjs.org
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      # # Publish to npm with latest tag
+      # - name: Publish to npm with latest tag
+      #   run: npm publish --access public --tag latest --registry=https://registry.npmjs.org
+      #   env:
+      #     NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
-      # Deprecate old version
-      - name: Deprecate version 1.0.1
-        run: npm deprecate @brgman/shapes@1.0.1 "This version is deprecated, please use a newer version." --registry=https://registry.npmjs.org
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      # # Deprecate old version
+      # - name: Deprecate version 1.0.1
+      #   run: npm deprecate @brgman/shapes@1.0.1 "This version is deprecated, please use a newer version." --registry=https://registry.npmjs.org
+      #   env:
+      #     NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       # Set up Node.js for GitHub Packages
       - name: Set up Node.js for GitHub Packages
