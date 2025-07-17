@@ -28,13 +28,13 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
-      # Debug npm authentication
-      - name: Debug npm authentication
-        run: |
-          npm whoami
-          cat .npmrc
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      # # Debug npm authentication
+      # - name: Debug npm authentication
+      #   run: |
+      #     npm whoami
+      #     cat .npmrc
+      #   env:
+      #     NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       # Build the package
       - name: Build package
