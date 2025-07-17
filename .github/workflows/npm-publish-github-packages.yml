@@ -24,29 +24,39 @@ jobs:
 
       # Install dependencies
       - name: Install dependencies
-        run: npm install
+        run: npm ci
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      # Debug npm authentication
+      - name: Debug npm authentication
+        run: |
+          npm whoami
+          cat .npmrc
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       # Build the package
       - name: Build package
         run: npm run build
-        run: npm whoami
-        run: cat .npmrc
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       # Publish to npm with version tag
       - name: Publish to npm with version tag
-        run: npm publish --access public --tag v${{ github.event.repository.packageJson.version }}
+        run: npm publish --access public --tag v${{ github.event.repository.packageJson.version }} --registry=https://registry.npmjs.org
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       # Publish to npm with latest tag
       - name: Publish to npm with latest tag
-        run: npm publish --access public --tag latest
+        run: npm publish --access public --tag latest --registry=https://registry.npmjs.org
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       # Deprecate old version
       - name: Deprecate version 1.0.1
-        run: npm deprecate @brgman/shapes@1.0.1 "This version is deprecated, please use a newer version."
+        run: npm deprecate @brgman/shapes@1.0.1 "This version is deprecated, please use a newer version." --registry=https://registry.npmjs.org
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
@@ -59,8 +69,16 @@ jobs:
           scope: '@brgman'
           cache: 'npm'
 
+      # Debug GitHub Packages authentication
+      - name: Debug GitHub Packages authentication
+        run: |
+          npm whoami --registry=https://npm.pkg.github.com
+          cat .npmrc
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GH_TOKEN }}
+
       # Publish to GitHub Packages
       - name: Publish to GitHub Packages
-        run: npm publish
+        run: npm publish --registry=https://npm.pkg.github.com
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GH_TOKEN }}
