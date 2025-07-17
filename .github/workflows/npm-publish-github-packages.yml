@@ -14,12 +14,12 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      # Set up Node.js
-      - name: Set up Node.js
+      # Set up Node.js for npm registry
+      - name: Set up Node.js for npm
         uses: actions/setup-node@v4
         with:
-          node-version: '18' # Use a recent Node.js version
-          registry-url: 'https://registry.npmjs.org' # npm registry
+          node-version: '18'
+          registry-url: 'https://registry.npmjs.org'
           cache: 'npm'
 
       # Install dependencies
@@ -48,11 +48,14 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
-      # Configure .npmrc for GitHub Packages
-      - name: Set up .npmrc for GitHub Packages
-        run: |
-          echo "//npm.pkg.github.com/:_authToken=${{ secrets.GH_TOKEN }}" > .npmrc
-          echo "@brgman:registry=https://npm.pkg.github.com/" >> .npmrc
+      # Set up Node.js for GitHub Packages
+      - name: Set up Node.js for GitHub Packages
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          registry-url: 'https://npm.pkg.github.com'
+          scope: '@brgman'
+          cache: 'npm'
 
       # Publish to GitHub Packages
       - name: Publish to GitHub Packages

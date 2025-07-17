@@ -47,6 +47,6 @@
   },
   "homepage": "https://github.com/brgman/shapes/blob/master/README.md",
   "publishConfig": {
-    "@brgman:registry": "https://npm.pkg.github.com"
+    "registry": "https://npm.pkg.github.com"
   }
 }
