@@ -21,7 +21,6 @@ export default {
         postcss({
             modules: true,
             autoModules: true,
-            extract: 'styles.css',
           }),
         resolve(),
         commonjs(),
