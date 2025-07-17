@@ -69,13 +69,13 @@ jobs:
           scope: '@brgman'
           cache: 'npm'
 
-      # Debug GitHub Packages authentication
-      - name: Debug GitHub Packages authentication
-        run: |
-          npm whoami --registry=https://npm.pkg.github.com
-          cat .npmrc
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.GH_TOKEN }}
+      # # Debug GitHub Packages authentication
+      # - name: Debug GitHub Packages authentication
+      #   run: |
+      #     npm whoami --registry=https://npm.pkg.github.com
+      #     cat .npmrc
+      #   env:
+      #     NODE_AUTH_TOKEN: ${{ secrets.GH_TOKEN }}
 
       # Publish to GitHub Packages
       - name: Publish to GitHub Packages
