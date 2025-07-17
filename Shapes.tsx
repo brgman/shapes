@@ -28,5 +28,3 @@ export const Shapes: React.FC<Props> = ({
 };
 
 Shapes.displayName = "shapes";
-
-export default Shapes;

@@ -1,8 +1,7 @@
 import React from 'react';
 import './App.css';
 
-import Shapes from "@brgman/shapes";
-import "@brgman/shapes/dist/styles.css"
+import {Shapes} from '@brgman/shapes';
 
 function App() {
   return (
@@ -18,7 +17,7 @@ function App() {
         <section className="max-w-4xl w-full bg-white rounded-lg shadow-lg p-6 mb-8">
           <h2 className="text-2xl font-semibold text-gray-800 mb-4">Component Demo</h2>
           <div className="border p-4 rounded bg-gray-50">
-            <Shapes total={1000} />
+            <Shapes total={100} />
           </div>
         </section>
 
