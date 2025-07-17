@@ -1,6 +1,6 @@
 {
   "name": "@brgman/shapes",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "type": "module",
   "description": "A React confetti component",
   "keywords": [
