@@ -48,5 +48,8 @@
   "bugs": {
     "url": "https://github.com/brgman/shapes/issues"
   },
-  "homepage": "https://github.com/brgman/shapes/blob/master/README.md"
+  "homepage": "https://github.com/brgman/shapes/blob/master/README.md",
+  "publishConfig": {
+    "@brgman:registry": "https://npm.pkg.github.com"
+  }
 }
