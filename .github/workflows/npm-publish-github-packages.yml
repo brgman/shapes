@@ -29,6 +29,8 @@ jobs:
       # Build the package
       - name: Build package
         run: npm run build
+        run: npm whoami
+        run: cat .npmrc
 
       # Publish to npm with version tag
       - name: Publish to npm with version tag
